@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+    <head>
+  
+        
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Badwritters only</title>
+        
+        <link rel="stylesheet" href="css_sheet.css"  />
+    
+    </head>
+
+    <body>
+
+        
+        
+        
+            
+        
+    <script type="text/javascript">
+        const dots = document.querySelectorAll(".dot-container button");
+        const images = document.querySelectorAll(".banner-message-media img");
+        
+        let i = 0; // current slide
+        let j = 5; // total slides
+        
+        function next(){
+            document.getElementById("content" + (i+1)).classList.remove("active");
+            i = ( j + i + 1) % j;
+            document.getElementById("content" + (i+1)).classList.add("active");
+            indicator( i+ 1 );
+        }
+        
+        function prev(){
+            document.getElementById("content" + (i+1)).classList.remove("active");
+            i = (j + i - 1) % j;
+            document.getElementById("content" + (i+1)).classList.add("active");
+            indicator(i+1);
+        }
+        
+        function indicator(num){
+            dots.forEach(function(dot){
+                dot.style.backgroundColor = "transparent";
+            });
+            document.querySelector(".dot-container button:nth-child(" + num + ")").style.backgroundColor = "#076bb8";
+        }
+        
+        function dot(index){
+            images.forEach(function(image){
+                image.classList.remove("active");
+            });
+            document.getElementById("content" + index).classList.add("active");
+            i = index - 1;
+            indicator(index);
+        }
+    </script>
+        
+              
+        
+    <button class="trigger">Click here to trigger the modal!</button>
+    <div class="modal">
+        <div class="modal-content">
+            <section class="row" >
+            <div class="column">
+                
+                <div class="container">
+                    <div class="image-container">
+                        <img src="/pages/image/riot/note.jpg"  id="content1" title="mhm" class="active">
+                        <img src="/pages/image/riot/un.jpg"  id="content2" title="mhm" >
+                        <img src="/pages/image/riot/deux.jpg"  id="content3" title="mhm" >
+                        <img src="/pages/image/riot/trois.jpg"  id="content4" title="mhm" >
+                        <img src="/pages/image/riot/cinq.jpg"  id="content5" title="mhm" >
+                    </div>
+                    <button id="prev" onclick="prev()"> &lt; </button>
+                    <button id="next" onclick="next()"> &gt; </button>                
+                </div>            
+            </div >
+            <div class="column">
+                
+                <blockquote>
+                    This is block quote element customized with CSS text box properties. You can customize more as you need...
+                </blockquote>
+                   
+            </div >    
+            
+        </section>
+        </div>
+    </div>
+        
+       
+        
+    <script>
+        const modal = document.querySelector(".modal");
+        const trigger = document.querySelector(".trigger");
+        const closeButton = document.querySelector(".close-button");
+
+        function toggleModal() {
+            modal.classList.toggle("show-modal");
+        }
+
+        function windowOnClick(event) {
+            if (event.target === modal) {
+                toggleModal();
+            }
+        }
+
+        trigger.addEventListener("click", toggleModal);
+        closeButton.addEventListener("click", toggleModal);
+        window.addEventListener("click", windowOnClick);
+    
+        
+    </script>
+    </body>
+     
+     
+</html>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
